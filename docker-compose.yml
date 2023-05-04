@@ -1,24 +1,21 @@
 version: '3.9'
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  menu:
+    image: app/menu
+    container_name: menu
+    build: 
+      dockerfile: Dockerfile1
     ports:
-      - 8001:5000
+      - "5000:5000"
     volumes:
       - .:/app
-    depends_on:
-      - db
-  
-  db:
-    image: mysql
-    restart: always
-    environment:
-      MYSQL_DATABASE: main
-      MYSQL_PASSWORD: root
-      MYSQL_ROOT_PASSWORD: root
-    volumes:
-      - .dbdata:/var/lib/mysql
+
+  orders:
+    image: app/orders
+    container_name: orders
+    build: 
+      dockerfile: Dockerfile2
     ports:
-      - 33067:3306
+      - "5001:5001"
+    volumes:
+      - .:/app
