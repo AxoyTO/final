@@ -1,21 +1,12 @@
 version: '3.9'
 services:
-  menu:
+  orderbox:
     image: app/menu
     container_name: menu
     build: 
-      dockerfile: Dockerfile1
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
-    volumes:
-      - .:/app
-
-  orders:
-    image: app/orders
-    container_name: orders
-    build: 
-      dockerfile: Dockerfile2
-    ports:
       - "5001:5001"
     volumes:
       - .:/app
