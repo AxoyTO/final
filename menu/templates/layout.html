@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/6b38291656.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+        {% if title %}
+        <title>OrderApp - {{ title }}</title>
+        {% else %}
+        <title>OrderApp</title>
+        {% endif %}
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <div class="sidebar">
+                <h2><img src="{{url_for('static', filename='icons/menu.png')}}" alt="menu-img" class="fa-solid"></h2>
+                <ul>
+                    <li><a href="/kebabs"><img src="{{url_for('static', filename='icons/kebabs.png')}}" alt="kebabs-img" class="fa-solid">Kebabs</a></li>
+                    <li><a href="/burgers"><img src="{{url_for('static', filename='icons/burgers.png')}}" alt="burgers-img" class="fa-solid">Burgers</a></li>
+                    <li><a href="/snacks"><img src="{{url_for('static', filename='icons/snacks.png')}}" alt="snacks-img" class="fa-solid" >Snacks</a></li>
+                    <li><a href="/salads"><img src="{{url_for('static', filename='icons/salads.png')}}" alt="salads-img" class="fa-solid">Salads</a></li>
+                    <li><a href="/drinks"><img src="{{url_for('static', filename='icons/drinks.png')}}" alt="drinks-img" class="fa-solid">Drinks</a></li>
+                    <li><a href="/dessert"><img src="{{url_for('static', filename='icons/dessert.png')}}" alt="dessert-img" class="fa-solid">Dessert</a></li>
+                </ul>
+                <div class="social_media">
+                    <a href="https://github.com/AxoyTO/"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/axoyto/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/toaksoy/"><i class="fa-brands fa-square-instagram"></i></a>
+                </div>
+            </div>
+            <div class="main_content">
+                <div class="header"><i class="fa-solid fa-cart-shopping"></i>Here will be cart!</div>
+                <div class="catalog_header">
+                    {% block header %}{% endblock %}
+                    <hr>
+                </div>
+                <div class="catalog">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
