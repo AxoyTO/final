@@ -1,4 +1,4 @@
-from orders import db
+from menu import db
 from sqlalchemy_utils import PhoneNumber
 import datetime
 from zoneinfo import ZoneInfo
@@ -23,7 +23,7 @@ class User(db.Model):
         phone_country_code
     )
 
-    orders = db.relationship("Order", backref='created_by', lazy=True)
+    orders = db.relationship("Order", backref='user_orders', lazy=True)
 
     def __repr__(self):
         return f"<User with ID#{self.id} and phone number: {self.phone_number}>"
@@ -31,7 +31,9 @@ class User(db.Model):
 class Menu(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     meal = db.Column(db.String(80), nullable = False, unique=True)
-    orders = db.relationship('Order', backref='meal_id', lazy=True)
+    type = db.Column(db.String(40))
+    price = db.Column(db.Float)
+    orders = db.relationship('Order', backref='meal_orders', lazy=True)
     protein = db.Column(db.Float)
     fat = db.Column(db.Float)
     carbs = db.Column(db.Float)
