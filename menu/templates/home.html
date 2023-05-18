@@ -18,7 +18,7 @@
         </p>
         <p id="price">${{ meal.price }}</p>
         
-        <form method="POST" action="/kebabs">
+        <form method="POST" action="/">
             {{ form.csrf_token }}
             <div>
                 <input type="hidden" name="meal_id" value="{{ meal.id }}"></input>
