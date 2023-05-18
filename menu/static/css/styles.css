@@ -97,6 +97,7 @@ body {
     color: #717171;
     border-bottom: 1px solid #e0e4e8;
     text-align: right;
+    font-size: x-large;
 }
 
 .wrapper .main_content .catalog_header h1 {
@@ -111,7 +112,7 @@ body {
 }
 
 .wrapper .main_content .catalog {
-    margin: 20px;
+    margin: 0px;
     color: #717171;
     line-height: 25px;
     display: grid;
@@ -122,10 +123,10 @@ body {
 .wrapper .main_content .catalog .menu_item {
     text-align: center;
     margin-bottom: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-left: 0;
     border-top: 0;
-    border-bottom: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .wrapper .main_content .catalog .menu_item .meal_img {
@@ -138,13 +139,14 @@ body {
     margin-bottom: 10px;
 }
 
-.wrapper .main_content .catalog .menu_item .submit {
+.wrapper .main_content .catalog .menu_item .cart_form_elem {
     border: rgba(0, 0, 0, 0.1) solid 1px;
     border-radius: 30%;
     font-weight: bold;
     margin-top: 5px;
     padding: 10px;
     color: black;
+    display: inline-block;
 }
 
 [data-md-tooltip] {

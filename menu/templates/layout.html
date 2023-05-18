@@ -7,6 +7,7 @@
         <script src="https://kit.fontawesome.com/6b38291656.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
         {% if title %}
         <title>OrderApp - {{ title }}</title>
@@ -34,7 +35,12 @@
                 </div>
             </div>
             <div class="main_content">
-                <div class="header"><a href="/cart">{{ cart }}<i class="fa-solid fa-cart-shopping"></i></a></div>
+                <div class="header">
+                    <a href="/cart">
+                        {{ total_cart }}<i class="fa-solid fa-cart-shopping"></i>
+                        ${{ '%0.2f'| format(total_price|float) }}
+                    </a>
+                </div>
                 <div class="catalog_header">
                     {% block header %}{% endblock %}
                     <hr>

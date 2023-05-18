@@ -10,7 +10,7 @@ class Order(db.Model):
     meal_id = db.Column(db.Integer, db.ForeignKey('menu.id'), nullable=False)
 
     def __repr__(self):
-        return f"<Order with ID#{id} and status {self.order_status}, created at {self.created_at} by {self.created_by}>"
+        return f"<Order with ID#{self.id} and status {self.order_status}, created at {self.created_at} by {self.created_by}>"
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)

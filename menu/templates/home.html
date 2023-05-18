@@ -18,9 +18,13 @@
         </p>
         <p id="price">${{ meal.price }}</p>
         
-        <form method="POST" action="">
-            <input type="hidden" name="meal_id" value="{{ meal.id }}"></input>
-            <input class="submit" type="submit" name="submit" value="Add to cart{{ request.form['submit'] }}"></input>
+        <form method="POST" action="/kebabs">
+            {{ form.csrf_token }}
+            <div>
+                <input type="hidden" name="meal_id" value="{{ meal.id }}"></input>
+                <button class="cart_form_elem" id="add" name="add" type="submit" value="Add"><i class="material-icons">add_shopping_cart</i></button>
+                <button class="cart_form_elem" id="delete" name="delete" type="submit" value="Delete"><i class="material-icons">remove_shopping_cart</i></button>
+            </div>
         </form>
     </div>
 {% endfor %}

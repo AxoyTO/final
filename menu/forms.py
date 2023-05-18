@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, IntegerField
 
-class AddToCartForm(FlaskForm):
+class CartForm(FlaskForm):
     meal_id = IntegerField()
-    submit = SubmitField('Add to cart')
+    add = SubmitField('Add to cart')
+    delete = SubmitField('Delete from cart')

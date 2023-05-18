@@ -1,7 +1,7 @@
 {% from "utils.html" import render_field %}
 {% extends "layout.html" %}
 {% block header %}
-<h1> {{ title }} </h1>
+    <h1> {{ title }} </h1>
 {% endblock header %}
 {% block content %}
 {% for meal in cart %}
@@ -13,14 +13,17 @@
                                     ' | Calories: '+meal.calory|string %}
         <img src="{{url_for('static', filename=file)}}" alt="" class="meal_img">
         <p>
-        <h2 class="meal_name">{{ meal.meal }}</h2>
-        <i class="material-icons md-tooltip--right" data-md-tooltip="{{tooltipinfo}}">info</i>
+            <h2 class="meal_name">{{ meal.meal }} x {{ meal.meal_count }}</h2>
+            <i class="material-icons md-tooltip--right" data-md-tooltip="{{tooltipinfo}}">info</i>
         </p>
-        <p id="price">${{ meal.price }}</p>
-
+        <p id="price">${{ '%0.2f'| format(meal.total_price|float) }}</p>
         <form method="POST" action="">
-            <input type="hidden" name="meal_id" value="{{ meal.id }}"></input>
-            <input class="submit" type="submit" name="submit" value="Add to cart{{ request.form['submit'] }}"></input>
+            {{ form.csrf_token }}
+            <div>
+                <input type="hidden" name="meal_id" value="{{ meal.meal_id }}"></input>
+                <button class="cart_form_elem" id="add" name="add" type="submit" value="Add"><i class="material-icons">add_shopping_cart</i></button>
+                <button class="cart_form_elem" id="delete" name="delete" type="submit" value="Delete"><i class="material-icons">remove_shopping_cart</i></button>
+            </div>
         </form>
     </div>
 {% endfor %}
