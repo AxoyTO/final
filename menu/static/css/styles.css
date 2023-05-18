@@ -72,13 +72,18 @@ body {
 .wrapper .sidebar .social_media a {
     display: block;
     width: 40px;
-    background: #594f8d;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 200, 150, 0.5);
     text-align: center;
     height: 40px;
     line-height: 40px;
     margin: 0 5px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+}
+
+.wrapper .sidebar .social_media a:hover {
+    color: rgba(255, 255, 255, 1);
 }
 
 .wrapper .main_content {
@@ -99,17 +104,89 @@ body {
     text-align: center;
 }
 
+.wrapper .main_content .catalog_header hr {
+    margin-top: 10px;
+    opacity: 0.2;
+
+}
+
 .wrapper .main_content .catalog {
     margin: 20px;
     color: #717171;
     line-height: 25px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: 300px;
+    grid-auto-rows: 500px;
 }
 
-.wrapper .main_content .catalog div {
-    border: 1px solid red;
+.wrapper .main_content .catalog .menu_item {
     text-align: center;
     margin-bottom: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 0;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.wrapper .main_content .catalog .menu_item .meal_img {
+    padding: 2%;
+    border-radius: 20%;
+}
+
+.wrapper .main_content .catalog .menu_item .meal_name {
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
+}
+
+.wrapper .main_content .catalog .menu_item .submit {
+    border: rgba(0, 0, 0, 0.1) solid 1px;
+    border-radius: 30%;
+    font-weight: bold;
+    margin-top: 5px;
+    padding: 10px;
+    color: black;
+}
+
+[data-md-tooltip] {
+    position: relative;
+}
+
+[data-md-tooltip]:before {
+    content: attr(data-md-tooltip);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    padding: 8px;
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.3s ease-in-out;
+    transform-origin: top;
+    background: #616161e6;
+    color: white;
+    border-radius: 2px;
+    font-size: 12px;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+[data-md-tooltip]:hover:before {
+    transform: translateX(-50%) scale(1);
+}
+
+[data-md-tooltip].md-tooltip--right:before {
+    left: auto;
+    right: -10px;
+    bottom: auto;
+    top: 50%;
+    transform: translate(100%, -50%) scale(0);
+    transform-origin: left center;
+}
+
+[data-md-tooltip].md-tooltip--right:hover:before {
+    transform: translate(100%, -50%) scale(1);
+}
+
+#price {
+    font-weight: 300;
+    font-size: larger;
+    padding: 10px;
 }
