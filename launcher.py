@@ -1,4 +1,3 @@
-import sys
 import subprocess
 
 menu = subprocess.Popen(["python", "menu.py"])
