@@ -1,12 +1,11 @@
 from menu import db
 from sqlalchemy_utils import PhoneNumber
 import datetime
-from zoneinfo import ZoneInfo
 
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_status = db.Column(db.String(50), nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False, default=lambda: datetime.datetime.now(tz=ZoneInfo('localtime')))
+    created_at = db.Column(db.DateTime, nullable=False, default=lambda: datetime.datetime.now())
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     meal_id = db.Column(db.Integer, db.ForeignKey('menu.id'), nullable=False)
 
