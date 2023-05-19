@@ -59,10 +59,11 @@ def menu(meals=None):
 
     cart_form = add_to_cart()
 
-    if meals != 'Dessert':
+    if meals != 'dessert':
         menu = Menu.query.filter_by(type=meals[:-1].capitalize()).all()
     else:
         menu = Menu.query.filter_by(type=meals.capitalize()).all()
+
     return render_template('home.html',
                            menu=menu,
                            title=meals.upper(),
