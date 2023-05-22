@@ -1,0 +1,35 @@
+id,meal,type,protein,fat,carbs,calory,description,price
+1,"Fierce Diablo Burger",Burger,20.8,53.2,72.7,646,,24.99
+2,"Gigachad Kebab",Kebab,99.0,1.0,1.0,1,,23.49
+3,"Ankara Kebab",Kebab,23.0,31.0,34.0,628,,27.49
+4,"Art Of War Burger",Burger,43.0,48.0,75.0,731,,29.99
+5,"Easy Life Burger",Burger,26.0,51.0,63.0,573,,22.69
+6,"Fire In The Hole Burger",Burger,44.0,41.0,79.0,656,,26.99
+7,"Anime Kebab",Kebab,31.0,63.0,51.0,394,,12.9
+8,"Kebab Fiesta",Kebab,12.0,51.0,34.0,123,,15.66
+9,"Tornado Doner",Kebab,29.0,45.0,63.0,348,,14.35
+10,"Doomy Steak",Kebab,46.0,24.0,37.0,481,,38.99
+11,"SpecOps Burger",Burger,33.0,33.0,33.0,333,,33.33
+12,"Gainz Wings",Snack,23.0,15.0,15.0,215,,9.49
+13,"Flying Buffalo Wings",Snack,53.0,12.0,16.0,187,,7.99
+14,"Bullet Fries",Snack,7.0,22.0,32.0,389,,3.29
+15,"Taco Amigo",Snack,11.0,21.0,31.0,413,,3.29
+16,"Spicy Hot Nachos",Snack,3.0,34.0,39.0,236,,2.89
+17,"Saucy Popcorn",Snack,2.0,26.0,41.0,372,,2.49
+18,"Hot Doggy",Snack,7.0,37.0,29.0,327,,3.49
+19,"Milky Way Milkshake",Drink,6.0,1.0,23.0,277,,2.99
+20,"EZ PZ Lemon Squeezy",Drink,4.0,2.0,17.0,183,,2.29
+21,"Smoothie Criminal",Drink,3.0,8.0,24.0,227,,2.49
+22,"Le Co La",Drink,2.0,7.0,28.0,321,,1.49
+23,Skoola,Drink,2.0,7.0,21.0,215,,1.89
+24,"White Chocolate Brownie",Dessert,6.0,16.0,43.0,283,,3.29
+25,"Vansy Cake",Dessert,3.0,5.0,52.0,427,,3.99
+26,"Burnt Wedding Cake",Dessert,1.0,1.0,1.0,1,,0.99
+27,DoNut,Dessert,0.0,7.0,32.0,187,,1.99
+28,"Do Not Do Nut",Dessert,1.0,6.0,31.0,173,,1.99
+29,"Healthy Lifestyle",Salad,25.0,2.0,4.0,382,,11.49
+30,"Salad with Burgers",Salad,29.0,31.0,47.0,526,,16.29
+31,"Aftergym Salad",Salad,27.0,4.0,11.0,417,,14.89
+32,"Keep Calm and No Cal",Salad,12.0,1.0,2.0,222,,12.49
+33,"Honey Almond Salad",Salad,13.0,5.0,29.0,283,,6.79
+34,Sfanta,Drink,1.0,6.0,24.0,293,,1.49
