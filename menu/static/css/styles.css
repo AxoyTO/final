@@ -37,6 +37,10 @@ body {
     width: 100px;
 }
 
+.mid-aligned {
+    text-align: center !important;
+}
+
 .wrapper .sidebar ul li {
     padding: 20px;
     height: 80px;
@@ -118,6 +122,13 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: 500px;
+}
+
+.wrapper .main_content .catalog .empty_cart {
+
+    margin: auto;
+    text-align: center;
+    grid-column-start: 2;
 }
 
 .wrapper .main_content .catalog .menu_item {

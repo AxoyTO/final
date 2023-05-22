@@ -4,6 +4,9 @@
     <h1> {{ title }} </h1>
 {% endblock header %}
 {% block content %}
+{% if not cart %}
+    <h1 class="empty_cart"> There is nothing here yet. </br> <p style="margin-top:15px">Please add something from the menu!</p> </h1>
+{% endif %}
 {% for meal in cart %}
     <div class="menu_item">
         {% set file = 'pics/'+meal.meal+'.png'%}
