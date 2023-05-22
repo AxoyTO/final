@@ -1,33 +1,48 @@
 {% from "utils.html" import render_field %}
 {% extends "layout.html" %}
 {% block header %}
-    <h1> {{ title }} </h1>
+<h1 id="cart-h1"> {{ title }} </h1>
+<form method="POST" action="/order">
+    {{ form.csrf_token }}
+    <button class="order_btn" id="order" name="order" type="submit" value="Order">
+        <h3>ORDER NOW</h3>
+    </button>
+</form>
 {% endblock header %}
 {% block content %}
+{% if order_id %}
+    <h2 class="order_success">Thank you for your order!</br>
+        Your order number is <span style="color: rgba(255, 0, 0, 0.767);">#{{ order_id }}</span>.</br>
+        Please wait until we get your order ready!
+    </h2>
+{% else %}
 {% if not cart %}
-    <h1 class="empty_cart"> There is nothing here yet. </br> <p style="margin-top:15px">Please add something from the menu!</p> </h1>
+    <h1 class="empty_cart"> There is nothing here yet. </br>
+        <p style="margin-top:15px">Please add something from the menu!</p>
+    </h1>
 {% endif %}
 {% for meal in cart %}
-    <div class="menu_item">
-        {% set file = 'pics/'+meal.meal+'.png'%}
-        {% set tooltipinfo = 'Protein: '+meal.protein|string+
-                                    ' | Fat: '+meal.fat|string+
-                                    ' | Carbs: '+meal.carbs|string+
-                                    ' | Calories: '+meal.calory|string %}
-        <img src="{{url_for('static', filename=file)}}" alt="" class="meal_img">
-        <p>
-            <h2 class="meal_name">{{ meal.meal }} x {{ meal.meal_count }}</h2>
-            <i class="material-icons md-tooltip--right" data-md-tooltip="{{tooltipinfo}}">info</i>
-        </p>
-        <p id="price">${{ '%0.2f'| format(meal.total_price|float) }}</p>
-        <form method="POST" action="">
-            {{ form.csrf_token }}
-            <div>
-                <input type="hidden" name="meal_id" value="{{ meal.meal_id }}"></input>
-                <button class="cart_form_elem" id="add" name="add" type="submit" value="Add"><i class="material-icons">add_shopping_cart</i></button>
-                <button class="cart_form_elem" id="delete" name="delete" type="submit" value="Delete"><i class="material-icons">remove_shopping_cart</i></button>
-            </div>
-        </form>
-    </div>
+<div class="menu_item">
+    {% set file = 'pics/'+meal.meal+'.png'%}
+    {% set tooltipinfo = 'Protein: '+meal.protein|string+
+                                        ' | Fat: '+meal.fat|string+
+                                        ' | Carbs: '+meal.carbs|string+
+                                        ' | Calories: '+meal.calory|string %}
+    <img src="{{url_for('static', filename=file)}}" alt="" class="meal_img">
+    <p>
+    <h2 class="meal_name">{{ meal.meal }} x {{ meal.meal_count }}</h2>
+    <i class="material-icons md-tooltip--right" data-md-tooltip="{{tooltipinfo}}">info</i>
+    </p>
+    <p id="price">${{ '%0.2f'| format(meal.total_price|float) }}</p>
+    <form method="POST" action="">
+        {{ form.csrf_token }}
+        <div>
+            <input type="hidden" name="meal_id" value="{{ meal.meal_id }}"></input>
+            <button class="cart_form_elem" id="add" name="add" type="submit" value="Add"><i class="material-icons">add_shopping_cart</i></button>
+            <button class="cart_form_elem" id="delete" name="delete" type="submit" value="Delete"><i class="material-icons">remove_shopping_cart</i></button>
+        </div>
+    </form>
+</div>
 {% endfor %}
+{% endif %}
 {% endblock content %}
