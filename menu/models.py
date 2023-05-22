@@ -4,10 +4,11 @@ import datetime
 
 class Orders(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, nullable=False, default=lambda: datetime.datetime.now())
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    meal_id = db.Column(db.Integer, db.ForeignKey('menu.id'), nullable=False)
     order_status = db.Column(db.String)
-    meals = db.relationship('Cart', backref='orders')
     
     def __repr__(self):
         return f"<Order with ID#{self.id} and status {self.order_status}, created at {self.created_at} by {self.created_by}>"
@@ -15,10 +16,10 @@ class Orders(db.Model):
 class Cart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     meal_id = db.Column(db.Integer, db.ForeignKey('menu.id'), nullable=False)
-    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f"<Cart with ID#{self.id}>"
+        return f"<Cart with ID#{self.id} by User#{self.user_id}>"
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -29,8 +30,11 @@ class User(db.Model):
         _phone_number,
         phone_country_code
     )
+    name = db.Column(db.String)
+    balance = db.Column(db.Float)
 
-    cart = db.relationship("Order", backref='user_cart', lazy=True)
+    orders = db.relationship("Orders", backref='user', lazy=True)
+    cart = db.relationship("Cart", backref="user", lazy=True)
 
     def __repr__(self):
         return f"<User with ID#{self.id} and phone number: {self.phone_number}>"
