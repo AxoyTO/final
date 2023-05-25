@@ -1,0 +1,36 @@
+{% from "utils.html" import render_field %}
+{% extends "layout.html" %}
+{% block header %}
+<h1> {{ title }} </h1>
+{% endblock header %}
+{% block content %}
+    <div class="content-section">
+        <form method="post" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                <div class="form-group">
+                    {{form.phone_number.label(class="form-control-label")}}
+
+                    {% if form.phone_number.errors %}
+                    {{form.phone_number(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.phone_number.errors %}
+                        <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{form.phone_number(class="form-control form-control-lg")}}
+                    {% endif %}
+            </fieldset>
+            <div class="form-group">
+                {{form.submit(class="btn btn-outline-info")}}
+            </div>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already have an account?<a class="ml-2" href="{{ url_for('users.login') }}">Sign In</a>
+        </small>
+    </div>
+{% endblock content %}

@@ -1,6 +1,11 @@
-from menu import db
+from menu import db, login_manager
 from sqlalchemy_utils import PhoneNumber
+from flask_login import UserMixin
 import datetime
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 class Orders(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,9 +26,9 @@ class Cart(db.Model):
     def __repr__(self):
         return f"<Cart with ID#{self.id} by User#{self.user_id}>"
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
-    _phone_number = db.Column(db.Unicode(255))
+    _phone_number = db.Column(db.Unicode(20))
     phone_country_code = db.Column(db.Unicode(8))
     phone_number = db.composite(
         PhoneNumber,
@@ -36,8 +41,18 @@ class User(db.Model):
     orders = db.relationship("Orders", backref='user', lazy=True)
     cart = db.relationship("Cart", backref="user", lazy=True)
 
+    @classmethod
+    def subtract_balance(cls, sub_balance, **kw):
+        cls.query.filter_by(**kw).update({'balance': cls.balance - sub_balance})
+        db.session.commit()
+
+    @classmethod
+    def get(cls, **kw):
+        user = cls.query.filter_by(**kw).first()
+        return user
+
     def __repr__(self):
-        return f"<User with ID#{self.id} and phone number: {self.phone_number}>"
+        return f"<User with ID#{self.id} and phone number:{self.phone_number} and balance:{self.balance}>"
     
 class Menu(db.Model):
     id = db.Column(db.Integer, primary_key=True)
