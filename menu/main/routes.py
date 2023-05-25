@@ -19,9 +19,6 @@ def home():
 def cart():
     order_id = 0
     title = 'CART'
-    if 'order_id' in request.args:
-        order_id = request.args['order_id']
-        title = "ORDER"
     cart_form = add_to_cart()
     total_price = get_total_price()
 
@@ -45,6 +42,12 @@ def cart():
         total_cart = r[0]
     query_result = db.session.execute(query)
     query_result = [r for r in query_result]
+
+    if total_cart and 'order_id' in request.args:
+        order_id = request.args['order_id']
+        title = "ORDER"
+        Cart.query.filter_by(user_id=get_current_user_id()).delete()
+        db.session.commit()
 
     return render_template('cart.html',
                            title=title,
@@ -88,7 +91,6 @@ def create_order():
     for i in data:
         order = Orders(order_id=order_id, created_by=user_id, order_status="InProgress", meal_id=i[0])
         db.session.add(order)
-    Cart.query.filter_by(user_id=user_id).delete()
     db.session.commit()
     return order_id
 
