@@ -48,9 +48,9 @@ def cart():
     if total_cart and 'order_id' in request.args:
         order_id = request.args['order_id']
         title = "ORDER"
-        Cart.query.filter_by(user_id=current_user.id).delete()
+        Cart.query.filter_by(user_id=1).delete()
         total_cart = 0
-        User.subtract_balance(total_price, id=current_user.id)
+        User.subtract_balance(total_price, id=1)
         total_price = ut.get_total_price()
         db.session.commit()
 
@@ -89,9 +89,9 @@ def menu(meals=None):
                            total_price=total_price)
 
 
-@login_required
+#@login_required
 def create_order():
-    user_id = current_user.id
+    user_id = 1
     order_id = ut.get_next_order_id()
     data = db.session.execute(text(f'select meal_id from cart where user_id = {user_id}')).all()
     for i in data:
@@ -109,7 +109,7 @@ def add_to_cart():
             if not meal is None:
                 db.session.delete(meal)
         if cart_form.add.data:
-            user_id = current_user.id
+            user_id = 1
             print(meal_id)
             meal = Cart(meal_id=meal_id, user_id=user_id)
             db.session.add(meal)
